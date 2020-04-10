@@ -1,0 +1,43 @@
+{
+  "builders": [
+    {
+      "ami_name": "provose-docker-amazon-linux-2--v0.1",
+      "ami_groups": ["all"],
+      "ami_regions": [
+        "eu-north-1",
+        "ap-south-1",
+        "eu-west-3",
+        "eu-west-2",
+        "eu-west-1",
+        "ap-northeast-2",
+        "ap-northeast-1",
+        "sa-east-1",
+        "ca-central-1",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "eu-central-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2"
+      ],
+      "region": "us-east-1",
+      "instance_type": "t2.micro",
+
+      "source_ami_filter": {
+        "filters": {
+          "name": "amzn2-ami-ecs-gpu-hvm-2.0.20200218-x86_64-ebs"
+        },
+        "owners": ["amazon"]
+      },
+      "ssh_username": "ec2-user",
+      "type": "amazon-ebs"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./v0.1/provose-docker-amazon-linux-2--v0.1.sh"
+    }
+  ]
+}
